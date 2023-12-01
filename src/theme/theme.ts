@@ -8,5 +8,6 @@ const theme = {
 
 export type Theme = typeof theme;
 export type ThemeTypographyVariants = keyof typeof typography.variants;
+export type ColorsVariants = keyof typeof colors; 
 
 export default theme; 
