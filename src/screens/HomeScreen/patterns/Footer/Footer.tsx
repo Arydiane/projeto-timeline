@@ -15,6 +15,7 @@ export default function Footer() {
         paddingVertical: '24px',
         alignItems: 'center', 
         justifyContent: 'center',
+        textAlign: 'center',
       }}
     >
       <Text variant="body2">
