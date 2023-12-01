@@ -20,7 +20,7 @@ export default function HomeScreen() {
     }}
   >
     <Background />
-
+    <Footer />
   </Box>
   );
 }
