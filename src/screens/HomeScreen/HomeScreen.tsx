@@ -3,6 +3,8 @@ import Background from "./patterns/Background/Background";
 import Menu from "./patterns/Menu/Menu";
 import Footer from "./patterns/Footer/Footer";
 import { useTheme } from "@src/theme/ThemeProvider";
+import Feed from "./patterns/Feed/Feed";
+import Text from "@src/components/Text/Text";
 
 
 export default function HomeScreen() {
@@ -19,6 +21,11 @@ export default function HomeScreen() {
     >
       <Background />
       <Menu />
+      <Feed>
+        <Feed.Header />
+          <Text tag="h2" variant="heading3">Últimas atualizações</Text>
+        <Feed.Posts />
+      </Feed>
       <Footer />
     </Box>
   );
