@@ -5,9 +5,9 @@ import Footer from "./patterns/Footer/Footer";
 import { useTheme } from "@src/theme/ThemeProvider";
 import Feed from "./patterns/Feed/Feed";
 import Text from "@src/components/Text/Text";
+import templatePageHOC from "@src/services/template/templatePageHOC";
 
-
-export default function HomeScreen() {
+function HomeScreen(props) {
   const theme = useTheme();
 
   return (
@@ -30,3 +30,7 @@ export default function HomeScreen() {
     </Box>
   );
 }
+
+export default templatePageHOC(HomeScreen, {
+  title: "Home",
+})
