@@ -1,9 +1,11 @@
 import Box from "@src/components/Box/Box";
 import Button from "@src/components/Button/Button";
 import Icon from "@src/components/Icon/Icon";
+import github from "@src/components/Icon/svgs/github";
 import Image from "@src/components/Image/Image";
 import Link from "@src/components/Link/Link";
 import Text from "@src/components/Text/Text";
+import { useTemplateConfig } from "@src/services/template/useTemplateConfig";
 import { useTheme } from "@src/theme/ThemeProvider";
 
 interface FeedProps {
@@ -31,6 +33,8 @@ export default function Feed({ children }: FeedProps) {
 
 Feed.Header = () => {
   const theme = useTheme();
+  const templateConfig = useTemplateConfig();
+
   return (
     <Box
       styleSheet={{
@@ -53,7 +57,7 @@ Feed.Header = () => {
             height: { xs: "100px", md: "128px" },
             borderRadius: "100%",
           }}
-          src="https://github.com/Arydiane.png"
+          src={templateConfig?.personal?.avatar}
           alt="Imagem de perfil de Arydiane"
         />
 
@@ -94,13 +98,13 @@ Feed.Header = () => {
       </Box>
 
       <Text tag="h1" variant="heading4">
-        Arydiane Jardim
+        {templateConfig?.personal?.name}
       </Text>
       <Text variant="body3" styleSheet={{ color: theme.colors.neutral.x500 }}>
-        @arydianejardim - Brasil
+        {templateConfig?.personal?.nickname} - {templateConfig?.personal?.country}
       </Text>
       <Text variant="body3" styleSheet={{ color: theme.colors.neutral.x500 }}>
-        Desenvolvedora Front-End
+        {templateConfig?.personal?.profession}
       </Text>
 
       <Box
@@ -111,18 +115,19 @@ Feed.Header = () => {
           gap: "14px",
         }}
       >
-        <Link href="https://youtube.com">
-          <Icon name="youtube" />
-        </Link>
-        <Link href="https://twitter.com">
-          <Icon name="twitter" />
-        </Link>
-        <Link href="https://instagram.com">
-          <Icon name="instagram" />
-        </Link>
-        <Link href="https://github.com/Arydiane">
-          <Icon name="github" />
-        </Link>
+        {Object.keys(templateConfig.personal.socialNetworks).map((key) => {
+          const socialNetwork = templateConfig.personal.socialNetworks[key];
+
+          if (socialNetwork) {
+            return (
+              <Link key={key} href={socialNetwork}>
+                <Icon name={key as any} />
+              </Link>
+            );
+          }
+
+          return null;
+        })}
       </Box>
     </Box>
   );
@@ -131,7 +136,9 @@ Feed.Header = () => {
 Feed.Posts = () => {
   return (
     <Box>
-      <Text tag="h3" variant="heading4">2023</Text>
+      <Text tag="h3" variant="heading4">
+        2023
+      </Text>
     </Box>
   );
 };
