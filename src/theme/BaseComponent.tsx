@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { StyleSheet } from "@src/theme/StyleSheet";
 import { parseStyleSheet } from '@displaykit/responsive_styles';
-import { type } from "os";
 
 interface StyledBaseComponent {
   styleSheet?: StyleSheet; 
@@ -23,7 +22,7 @@ interface BaseComponentsProps {
 
 export const BaseComponent = React.forwardRef<unknown, BaseComponentsProps>((props, ref) => {
   return (
-    <StyledBaseComponent {...props} ref={ref} />
+    <StyledBaseComponent ref={ref} {...props} />
   )
 })
 
