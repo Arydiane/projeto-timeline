@@ -4,10 +4,14 @@ import Menu from "./patterns/Menu/Menu";
 import Footer from "./patterns/Footer/Footer";
 import { useTheme } from "@src/theme/ThemeProvider";
 import Feed from "./patterns/Feed/Feed";
-import Text from "@src/components/Text/Text";
 import templatePageHOC from "@src/services/template/templatePageHOC";
+import type { Post } from "@src/services/posts/PostsService";
 
-function HomeScreen(props) {
+interface HomeScreenProps {
+  posts: Post[];
+}
+
+function HomeScreen(props: HomeScreenProps) {
   const theme = useTheme();
 
   return (
@@ -23,8 +27,7 @@ function HomeScreen(props) {
       <Menu />
       <Feed>
         <Feed.Header />
-          <Text tag="h2" variant="heading3">Últimas atualizações</Text>
-        <Feed.Posts />
+        <Feed.Posts posts={props.posts} />
       </Feed>
       <Footer />
     </Box>
