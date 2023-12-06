@@ -16,7 +16,7 @@ interface IconProps {
   size?: keyof typeof iconSizes; 
 }
 
-export default function Icon({ size, name, ...props } : IconProps) {
+export default function Icon({ size, name, styleSheet, ...props } : IconProps) {
 
   const CurrentIcon = icons[name]; 
 
@@ -29,6 +29,7 @@ export default function Icon({ size, name, ...props } : IconProps) {
       styleSheet={{
         width: iconSizes[size], 
         height: iconSizes[size],
+        ...styleSheet,
       }}
       color="inherit"
       fill="currentColor"
