@@ -1,12 +1,13 @@
 import Box from "@src/components/Box/Box";
 import Button from "@src/components/Button/Button";
 import Icon from "@src/components/Icon/Icon";
-import github from "@src/components/Icon/svgs/github";
 import Image from "@src/components/Image/Image";
 import Link from "@src/components/Link/Link";
 import Text from "@src/components/Text/Text";
+import type { Post } from "@src/services/posts/PostsService";
 import { useTemplateConfig } from "@src/services/template/useTemplateConfig";
 import { useTheme } from "@src/theme/ThemeProvider";
+import { FeedPost } from "./patterns/FeedPost";
 
 interface FeedProps {
   children: React.ReactNode;
@@ -22,7 +23,7 @@ export default function Feed({ children }: FeedProps) {
         width: "100%",
         maxWidth: "683px",
         borderRadius: "8px",
-        paddingVertical: "40px",
+        paddingTop: "40px",
         paddingHorizontal: "32px",
       }}
     >
@@ -101,7 +102,8 @@ Feed.Header = () => {
         {templateConfig?.personal?.name}
       </Text>
       <Text variant="body3" styleSheet={{ color: theme.colors.neutral.x500 }}>
-        {templateConfig?.personal?.nickname} - {templateConfig?.personal?.country}
+        {templateConfig?.personal?.nickname} -{" "}
+        {templateConfig?.personal?.country}
       </Text>
       <Text variant="body3" styleSheet={{ color: theme.colors.neutral.x500 }}>
         {templateConfig?.personal?.profession}
@@ -133,12 +135,36 @@ Feed.Header = () => {
   );
 };
 
-Feed.Posts = () => {
+interface FeedPostsProps {
+  posts: Post[];
+}
+
+Feed.Posts = ({ posts }: FeedPostsProps) => {
   return (
     <Box>
-      <Text tag="h3" variant="heading4">
-        2023
+      <Text 
+      tag="h2" 
+      variant="heading3"
+        styleSheet={{
+          marginBottom: "27px"
+        }}
+      >
+        Últimas atualizações
       </Text>
+      {posts.map(({ title, slug, metadata, image }) => {
+        const { date, excerpt, tags, url } = metadata;
+        return (
+          <FeedPost
+            key={slug}
+            title={title}
+            date={date}
+            excerpt={excerpt}
+            tags={tags}
+            url={url}
+            image={image}
+          />
+        );
+      })}
     </Box>
   );
 };
