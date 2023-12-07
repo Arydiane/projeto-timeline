@@ -1,0 +1,15 @@
+site: 
+  title: "Arydiane Jardim - Timeline"
+  description: "Bem vindo a minha timeline pessoal"
+personal: 
+  name: "Arydiane Jardim"
+  nickname: "@arydianejardim"
+  profession: "Desenvolvedora Front-End"
+  country: "Brasil"
+  avatar: "https://github.com/Arydiane.png"
+  socialNetworks: 
+    youtube: "https://youtube.com"
+    twitter: "https://twitter.com"
+    instagram: "https://www.instagram.com/arydianejardim/"
+    github: "https://github.com/Arydiane"
+    linkedin: "https://linkedin.com/in/arydiane-jardim"

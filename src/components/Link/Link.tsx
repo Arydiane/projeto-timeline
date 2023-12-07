@@ -45,21 +45,21 @@ const Link = React.forwardRef(
       href,
       styleSheet: {
         textDecoration: "none",
-        ...(colorVariantEnabled && {
+        ...colorVariantEnabled && {
           color: currentColorSet.color,
-        }),
+        },
         ...styleSheet,
         hover: {
           ...styleSheet?.hover,
-          ...(colorVariantEnabled && {
+          ...colorVariantEnabled && {
             color: currentColorSet.focus.color,
-          }),
+          },
         },
         focus: {
           ...styleSheet?.focus,
-          ...(colorVariantEnabled && {
+          ...colorVariantEnabled && {
             color: currentColorSet.focus.color,
-          }),
+          },
         },
       },
       ...props,
@@ -76,10 +76,8 @@ const Link = React.forwardRef(
       );
 
     return (
-      <NextLink href={href} {...props}>
-        <Text {...linkProps} tag="">
-          {children}
-        </Text>
+      <NextLink href={href} passHref style={{ textDecoration: 'none' }}>
+        <Text {...linkProps} tag="" />
       </NextLink>
     );
   }
