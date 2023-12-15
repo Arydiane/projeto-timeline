@@ -40,7 +40,7 @@ export default function NewsletterScreen() {
           event.preventDefault();
           console.log("Enviando dados do formulário");
           //Validar
-          if (!form.values.emailNewsletter.includes("@")) {
+          if (!form.values.emailNewsletter.includes("@") || form.values.emailNewsletter == "") {
             alert("Informe um e-mail válido!");
             return;
           }
