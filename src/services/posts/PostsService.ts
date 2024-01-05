@@ -38,7 +38,7 @@ export default function PostsService() {
           slug: postFileName.replace(".md", ""),
           content, 
         }
-        console.log(post)
+        // console.log(post)
         return post
       }); 
 
